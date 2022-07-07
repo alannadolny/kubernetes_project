@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: deployment
+  labels:
+    app: backend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: backend-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: backend-deployment
+    spec:
+      containers:
+        - name: backend-deployment-container
+          image: alancio/projekt-backend:dev-2.0
+          envFrom:
+            - configMapRef:
+                name: backend-configmap

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: deployment
+  labels:
+    app: frontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: frontend-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: frontend-deployment
+    spec:
+      containers:
+        - name: frontend-deployment-container
+          image: alancio/projekt-frontend:dev-2.0

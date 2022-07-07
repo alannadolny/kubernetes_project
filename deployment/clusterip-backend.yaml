@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: backend-clusterip
+  namespace: deployment
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5000
+      targetPort: 5000
+      protocol: TCP
+  selector:
+    app: backend-deployment
